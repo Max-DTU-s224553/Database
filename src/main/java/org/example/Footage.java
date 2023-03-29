@@ -4,22 +4,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Footage {
     private final String title;
-    private final Date date;
+    private final Date programDate;
     private final Integer duration;
+    private final String footageID;
 
-    public Footage(String title, Date date, Integer duration) {
+    public Footage(String title, Date programDate, Integer duration, String footageID) {
         this.title = title;
-        this.date = date;
+        this.programDate = programDate;
         this.duration = duration;
+        this.footageID = footageID;
+
     }
 
     public String getTitle() {
         return title;
     }
-    public Date getDate() { return date; }
+    public Date getDate() { return programDate; }
     public Integer getDuration() {
         return duration;
     }
+    public Integer getFootageID() {return footageID; }
 
     @Override
     public String toString() {

@@ -46,21 +46,22 @@ public class FootagesAndReportersLoader {
 						continue;
 					if(values.size() == NUMBER_OF_FIELDS_EXPECTED) {
 						String title = values.get(0);
-						Date date = null;
+						Date programDate = null;
 						try {
-							date = dateParser.parse(values.get(1));
+							programDate = dateParser.parse(values.get(1));
 						} catch (ParseException e) {
 							throw new NumberFormatException("Invalid value (" + values.get(1) + ") for date at line " + lineNbr);
 						}
 						Integer duration = Integer.valueOf(values.get(2));
-						Integer cpr = Integer.valueOf(values.get(3));
+						Integer CPRNummer = Integer.valueOf(values.get(3));
 						String firstName = values.get(4);
 						String lastName = values.get(5);
 						String streetName = values.get(6);
 						Integer civicNumber = Integer.valueOf(values.get(7));
 						Integer zipCode  = Integer.valueOf(values.get(8));
 						String country = values.get(9);
-						FootageAndReporter far = new FootageAndReporter(title, date, duration, cpr, firstName, lastName, streetName, civicNumber, zipCode, country);
+						String continent = values.get(10);
+						FootageAndReporter far = new FootageAndReporter(title, programDate, duration, CPRNummer, firstName, lastName, streetName, civicNumber, zipCode, country, continent);
 						farList.add(far);
 					} else
 						throw new IOException("Invalid number of values on line " +lineNbr +". expected " +NUMBER_OF_FIELDS_EXPECTED +" values, found " +values.size());

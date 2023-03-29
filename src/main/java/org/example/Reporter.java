@@ -7,8 +7,9 @@ public class Reporter {
     private final Integer civicNumber;
     private final Integer zipCode;
     private final String country;
+    private final String continent;
 
-    public Reporter(Integer cpr, String firstName, String lastName, String streetName, Integer civicNumber, Integer zipCode, String country) {
+    public Reporter(Integer cpr, String firstName, String lastName, String streetName, Integer civicNumber, Integer zipCode, String country, String continent) {
         this.cpr = cpr;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -16,9 +17,10 @@ public class Reporter {
         this.civicNumber = civicNumber;
         this.zipCode = zipCode;
         this.country = country;
+        this.continent = continent;
     }
 
-    public Integer getCPR() { return cpr; }
+    public Integer getCPRNummer() { return CPRNummer; }
 
     public String getFirstName() {
         return firstName;
@@ -41,13 +43,14 @@ public class Reporter {
     public String getCountry() {
         return country;
     }
+    public String getContinent() {return continent;}
 
 
     @Override
     public String toString() {
         final String D = ";";
 
-        return getCPR() + D + getFirstName() + D + getLastName() + D + getStreetName() + D + getCivicNumber() + D + getZIPCode() + D + getCountry();
+        return getCPRNummer() + D + getFirstName() + D + getLastName() + D + getStreetName() + D + getCivicNumber() + D + getZIPCode() + D + getCountry() + D + getContinent();
     }
 
 }
