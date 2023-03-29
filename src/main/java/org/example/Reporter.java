@@ -1,6 +1,6 @@
 public class Reporter {
 
-    private final Integer cpr;
+    private final Integer CPRNummer;
     private final String firstName;
     private final String lastName;
     private final String streetName;
@@ -9,8 +9,8 @@ public class Reporter {
     private final String country;
     private final String continent;
 
-    public Reporter(Integer cpr, String firstName, String lastName, String streetName, Integer civicNumber, Integer zipCode, String country, String continent) {
-        this.cpr = cpr;
+    public Reporter(Integer CPRNummer, String firstName, String lastName, String streetName, Integer civicNumber, Integer zipCode, String country, String continent) {
+        this.CPRNummer = CPRNummer;
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetName = streetName;

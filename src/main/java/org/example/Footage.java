@@ -19,18 +19,18 @@ public class Footage {
     public String getTitle() {
         return title;
     }
-    public Date getDate() { return programDate; }
+    public Date getprogramDate() { return programDate; }
     public Integer getDuration() {
         return duration;
     }
-    public Integer getFootageID() {return footageID; }
+    public String getFootageID() {return title; }
 
     @Override
     public String toString() {
         final String D = ";";
         final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
 
-        return getTitle() +D + dateFormatter.format(getDate()) +D + getDuration();
+        return getTitle() +D + dateFormatter.format(getprogramDate()) +D + getDuration() + D + getFootageID();
     }
 
 }
