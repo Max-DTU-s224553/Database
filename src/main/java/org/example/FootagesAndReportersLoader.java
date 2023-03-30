@@ -25,26 +25,28 @@ public class FootagesAndReportersLoader {
 	private final String delimiter = SEMICOLON_DELIMITER;
 	SimpleDateFormat dateParser = new SimpleDateFormat("yyyyMMdd");
 
+	public static final String filename = "src/main/resource/uploads.csv";
+
 	public List<FootageAndReporter> loadFootagesAndReporters(String uolaods) throws FileNotFoundException, IOException {
 		List<FootageAndReporter> farList = new ArrayList<FootageAndReporter>();
-		
+
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new FileReader(filename));
 
-		    String line;
-		    int lineNbr = 0;
-		    while ((line = in.readLine()) != null) {
-		    	lineNbr++;
-		    	List<String> values = new ArrayList<String>();
-		    	try (Scanner rowScanner = new Scanner(line)) {
-		    	    rowScanner.useDelimiter(delimiter);
-		    	    while (rowScanner.hasNext()) {
-		    	        values.add(rowScanner.next());
-		    	    }
-					if(values.size() == 0)
+			String line;
+			int lineNbr = 0;
+			while ((line = in.readLine()) != null) {
+				lineNbr++;
+				List<String> values = new ArrayList<String>();
+				try (Scanner rowScanner = new Scanner(line)) {
+					rowScanner.useDelimiter(delimiter);
+					while (rowScanner.hasNext()) {
+						values.add(rowScanner.next());
+					}
+					if (values.size() == 0)
 						continue;
-					if(values.size() == NUMBER_OF_FIELDS_EXPECTED) {
+					if (values.size() == NUMBER_OF_FIELDS_EXPECTED) {
 						String title = values.get(0);
 						Date programDate = null;
 						try {
@@ -58,20 +60,23 @@ public class FootagesAndReportersLoader {
 						String lastName = values.get(5);
 						String streetName = values.get(6);
 						Integer civicNumber = Integer.valueOf(values.get(7));
-						Integer zipCode  = Integer.valueOf(values.get(8));
+						Integer zipCode = Integer.valueOf(values.get(8));
 						String country = values.get(9);
 						String continent = values.get(10);
 						FootageAndReporter far = new FootageAndReporter(title, programDate, duration, CPRNummer, firstName, lastName, streetName, civicNumber, zipCode, country, continent);
 						farList.add(far);
 					} else
-						throw new IOException("Invalid number of values on line " +lineNbr +". expected " +NUMBER_OF_FIELDS_EXPECTED +" values, found " +values.size());
-		    	}
-		    }
+						throw new IOException("Invalid number of values on line " + lineNbr + ". expected " + NUMBER_OF_FIELDS_EXPECTED + " values, found " + values.size());
+				}
+			}
 		} finally {
-			if(in != null)
-				try { in.close(); } catch(Exception e) { /* Ignore */ };
+			if (in != null)
+				try {
+					in.close();
+				} catch (Exception e) { /* Ignore */ }
+			;
 		}
-		
+
 		return farList;
 	}
 }
