@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.*;
 import java.sql.*;
 
 public class Main {
@@ -9,29 +10,9 @@ public class Main {
     private static final String PASSWORD = "";
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in); // Initialize scanner
-        String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
+        SQLScriptRunner scriptRunner = new SQLScriptRunner();
 
-        System.out.println("Type your SQL query below");
-        String query = scan.nextLine(); // Takes input
-
-        try {
-            Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while ( resultSet.next() ) {
-                // Gets the information of the first 3 columns, and prints it out
-                System.out.println(
-                        resultSet.getString(1) + " " +
-                        resultSet.getString(2) + " " +
-                        resultSet.getString(3)
-                );
-            }
-            connection.close(); // closes connection
-        }
-        catch (SQLException e) {
-            System.out.println("Connection failed: " + e.getMessage()); // Error message
-        }
+        //scriptRunner.initSQLDatabase(); // Runs the SQL initializing file
+        scriptRunner.runQueryReader(); // Runs the Java App that takes SQL Queries
     }
 }

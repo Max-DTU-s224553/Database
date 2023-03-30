@@ -1,7 +1,5 @@
 DROP DATABASE IF EXISTS TV3;
-
 CREATE DATABASE TV3;
-
 USE TV3;
 
 CREATE TABLE Program
@@ -12,13 +10,13 @@ CREATE TABLE Program
  CPRNummer      INT(10),
  PRIMARY KEY(Title, FootageID));
  
- SELECT * FROM Program;
+ -- SELECT * FROM Program;
  
  -- ALTER TABLE Program ADD ProgramID INT(10);
 
 
  
- select * from Program;
+ -- select * from Program;
  
  CREATE TABLE Journalist
  (CPRNummer     INT(10), 
@@ -26,7 +24,7 @@ CREATE TABLE Program
   LastName      VARCHAR(20), 
   PRIMARY KEY (CPRNummer, FirstName));
   
-  SELECT * FROM Journalist;
+  -- SELECT * FROM Journalist;
   
 CREATE TABLE Journalist_Address
 (CPRNummer       INT(10),
@@ -38,7 +36,7 @@ CREATE TABLE Journalist_Address
  Continent       ENUM('Europa','Afrika','USA','Syd Amerika', 'Asien', 'Australien'),
  PRIMARY KEY (CPRNummer));
  
- SELECT * FROM Journalist_Address;
+ -- SELECT * FROM Journalist_Address;
  
  /*
  Drop table Program;
@@ -56,13 +54,13 @@ INSERT Program VALUES
 ('Election Day', '07', '2022-01-11','155', '10204410'),
 ('Snowstorm', '08', '2023-03-06','111', '10103040');
 
-SELECT * FROM Program order by FootageID;
+-- SELECT * FROM Program order by FootageID;
 
-select distinct * from Program Left join Journalist on Journalist.CPRNummer;
+-- select distinct * from Program Left join Journalist on Journalist.CPRNummer;
 
-select distinct Program.Title, Program.ProgramDate, Program.Duration, Journalist.CPRNummer, Journalist.FirstName, Journalist.LastName 
-from Program Left join Journalist 
-on Journalist.CPRNummer = Program.CPRNummer;
+-- select distinct Program.Title, Program.ProgramDate, Program.Duration, Journalist.CPRNummer, Journalist.FirstName, Journalist.LastName 
+-- from Program Left join Journalist 
+-- on Journalist.CPRNummer = Program.CPRNummer;
 
 INSERT Journalist VALUES
 ('10103040','Mark','Miller'),
@@ -71,7 +69,7 @@ INSERT Journalist VALUES
 ('20208981','Pia','Pabst'),
 ('10204410','Nick','Nassar');
 
-SELECT * FROM Journalist;
+-- SELECT * FROM Journalist;
 
 INSERT Journalist_Address VALUES
 ('10103040','Nullvej', '132', '2800', 'Kgs. Lyngby', 'Danmark', 'Europa'), 
@@ -80,7 +78,7 @@ INSERT Journalist_Address VALUES
 ('20208981', 'Hovedgade', '9', '2850', 'Nærum', 'Danmark', 'Europa'), 
 ('10204410', 'Vestergaardsvej', '13', '2830', 'Virum', 'Danmark', 'Europa');
 
-SELECT * FROM Journalist_Address;
+-- SELECT * FROM Journalist_Address;
   
   
 
