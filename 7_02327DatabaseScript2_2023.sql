@@ -96,3 +96,28 @@ select * from Program;
 DELETE FROM PROGRAM WHERE Title = 'ChatGPT overtager verden';
 
 SELECT * FROM Program;
+
+SELECT * FROM Title NATURAL RIGHT OUTER JOIN CPRNummer;
+
+SELECT Edition.Duration FROM Edition Where Duration>(SELECT MAX(Edition.Duration));
+
+SELECT MAX(Duration) AS highest_Duration FROM EDITION;
+
+select distinct Program.Title, Program.ProgramDate, Program.Duration, Journalist.CPRNummer, Journalist.FirstName, Journalist.LastName 
+from Program Left join Journalist 
+on Journalist.CPRNummer = Program.CPRNummer;
+
+SELECT * FROM Program NATURAL RIGHT OUTER JOIN Journalist ORDER BY CPRNummer;
+
+
+SELECT * FROM Program NATURAL JOIN Journalist ORDER BY CPRNummer;
+
+UPDATE Program SET Duration=Duration*1.03 WHERE Duration<120;
+
+
+CREATE TABLE ProgramOld LIKE Program;
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Program Set Duration= 2 WHERE ProgramID=1;
+SELECT * FROM Program;
+CALL ProgramOld;
+SET SQL_SAFE_UPDATES = 1;
