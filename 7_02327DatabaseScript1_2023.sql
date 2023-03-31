@@ -94,7 +94,7 @@ INSERT Journalist_Address VALUES
 ('20208981', 'Hovedgade', '9', '2850', 'Nærum', 'Danmark', 'Europa'), 
 ('10204410', 'Vestergaardsvej', '13', '2830', 'Virum', 'Danmark', 'Europa');
 
-SELECT * FROM PROGRAM;
+SELECT * FROM AllInfo;
 
   
 
