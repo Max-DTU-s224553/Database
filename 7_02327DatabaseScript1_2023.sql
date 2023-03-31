@@ -58,7 +58,7 @@ CREATE TABLE Journalist_Address
  Drop table Journalist;
  */
  
- /*
+ 
 INSERT Program VALUES
 ('Royal wedding', '01','2004-05-14','174', '10103040'),
 ('Covid-19 Restrictions', '02', '2020-03-11','162', '30302125'),
@@ -68,7 +68,7 @@ INSERT Program VALUES
 ('SAS Strike', '06', '2022-07-18','112', '30302125'),
 ('Election Day', '07', '2022-01-11','155', '10204410'),
 ('Snowstorm', '08', '2023-03-06','111', '10103040');
-*/
+
 
 -- SELECT * FROM Program order by FootageID;
 
