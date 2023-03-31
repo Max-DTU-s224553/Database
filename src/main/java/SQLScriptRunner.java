@@ -44,8 +44,10 @@ public class SQLScriptRunner {
         Scanner scan = new Scanner(System.in); // Initialize scanner
         String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
 
-        System.out.println("Type your SQL query below");
+        System.out.println();
+        System.out.print("Type your SQL query: ");
         String query = scan.nextLine(); // Takes input
+        System.out.println();
 
         try {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
@@ -74,8 +76,8 @@ public class SQLScriptRunner {
             String line = reader.readLine();
 
             while (line != null) {
-                line = reader.readLine();
                 System.out.println(line);
+                line = reader.readLine();
             }
 
         }
