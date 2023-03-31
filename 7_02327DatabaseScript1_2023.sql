@@ -79,6 +79,6 @@ INSERT Journalist_Address VALUES
 ('10204410', 'Vestergaardsvej', '13', '2830', 'Virum', 'Danmark', 'Europa');
 
 -- SELECT * FROM Journalist_Address;
-  
+
   
 

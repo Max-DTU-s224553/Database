@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
 
-public class SQLScriptRunner {
+public class ScriptRunner {
     private static final String HOST = "localhost";
     private static final String PORT = "3306";
     private static final String USERNAME = "root";
@@ -59,8 +59,8 @@ public class SQLScriptRunner {
                 // Gets the information of the first 3 columns, and prints it out
                 System.out.println(
                         resultSet.getString(1) + " " +
-                                resultSet.getString(2) + " " +
-                                resultSet.getString(3)
+                        resultSet.getString(2) + " " +
+                        resultSet.getString(3)
                 );
             }
             connection.close(); // closes connection
@@ -74,12 +74,36 @@ public class SQLScriptRunner {
         try{
             BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/uploads.csv"));
             String line = reader.readLine();
+            StringBuilder sql = new StringBuilder();
 
             while (line != null) {
-                System.out.println(line);
+                int i = 0;
+                //System.out.print("(");
+                sql.append("(");
+                for(String s: line.split(";") ){
+                    if(i + 1 == line.split(";").length){
+                        sql.append("'"+s+ "'");
+                    }
+                    else{
+                        sql.append("'"+s+ "', ");
+                        //System.out.println(line.split(";").length+ " length");
+                        //System.out.println(i+" i");
+                    }
+                    i++;
+                }
+                sql.append("),");
+
+                sql.append("\n");
+                //System.out.print("),");
+                //System.out.println();
+                //System.out.println(line);
                 line = reader.readLine();
             }
 
+            sql.delete(sql.length() -2, sql.length()); // Deletes the last comma
+            sql.append(";");
+
+            System.out.println(sql);
         }
         catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
