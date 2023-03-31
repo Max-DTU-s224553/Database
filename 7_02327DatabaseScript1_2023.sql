@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS TV3;
 CREATE DATABASE TV3;
 USE TV3;
-/*
+
 CREATE TABLE Program
 (Title	    	VARCHAR(50),
  FootageID      INT(10),
@@ -9,8 +9,9 @@ CREATE TABLE Program
  Duration		INT(181),
  CPRNummer      INT(10),
  PRIMARY KEY(Title, FootageID));
- */
- CREATE TABLE Program
+ 
+ 
+ CREATE TABLE AllInfo
  (Title VARCHAR(50),
  Date VARCHAR(50),
  Duration INT(3),
@@ -21,6 +22,7 @@ CREATE TABLE Program
  CivicNumber INT(3),
  ZIPCode INT(4),
  Country VARCHAR(50));
+ 
  
  -- SELECT * FROM Program;
  

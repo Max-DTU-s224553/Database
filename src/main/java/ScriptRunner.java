@@ -110,13 +110,13 @@ public class ScriptRunner {
 
     private void executeInsertion(String query){
         String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
-        System.out.println("Inserted the data from uploads.csv into PROGRAM table");
+        System.out.println("Inserted the data from uploads.csv into AllInfo table");
 
         try {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM Program");
-            statement.executeUpdate("INSERT Program VALUES "+query);
+            statement.executeUpdate("DELETE FROM AllInfo");
+            statement.executeUpdate("INSERT AllInfo VALUES "+query);
 
             connection.close(); // closes connection
         }
