@@ -54,8 +54,8 @@ public class ScriptRunner {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            int columnCount = resultSet.getMetaData().getColumnCount();
 
+            int columnCount = resultSet.getMetaData().getColumnCount();
             while (resultSet.next()) {
                 for (int i = 1; i <= columnCount; i++) {
                     System.out.print(resultSet.getString(i) + " ");
