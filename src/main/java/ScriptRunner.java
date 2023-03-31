@@ -11,6 +11,7 @@ public class ScriptRunner {
     private static final String USERNAME = "root";
     private static final String DATABASE = "TV3";
     private static final String PASSWORD = "";
+    private static final String TABLE = "AllInfo"; // name of the table where data will be inserted to from uploads.csv
 
 
     public void initSQLDatabase(){
@@ -110,18 +111,18 @@ public class ScriptRunner {
 
     private void executeInsertion(String query){
         String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
-        System.out.println("Inserted the data from uploads.csv into AllInfo table");
 
         try {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM AllInfo");
-            statement.executeUpdate("INSERT AllInfo VALUES "+query);
-
+            statement.executeUpdate("DELETE FROM "+TABLE);
+            statement.executeUpdate("INSERT "+TABLE+" VALUES "+query);
             connection.close(); // closes connection
+
+            System.out.println("Inserted the data from uploads.csv into "+TABLE+" table");
         }
         catch (SQLException e) {
-            System.out.println("Connection failed: " + e.getMessage()); // Error message
+            System.out.println("Insertion of "+TABLE+" table failed: " + e.getMessage()); // Error message
         }
     }
 }
