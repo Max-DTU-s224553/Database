@@ -125,7 +125,7 @@ public class ScriptRunner {
 
     private void executeInsertion(String query){
         String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
-        System.out.println("Insert the data into PROGRAM");
+        System.out.println("Inserted the data from uploads.csv into PROGRAM table");
 
         try {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
