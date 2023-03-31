@@ -53,16 +53,29 @@ public class ScriptRunner {
             Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
+            int columnCount = resultSet.getMetaData().getColumnCount();
 
-
-            while ( resultSet.next() ) {
-                // Gets the information of the first 3 columns, and prints it out
-                System.out.println(
-                        resultSet.getString(1) + " " +
-                        resultSet.getString(2) + " " +
-                        resultSet.getString(3)
-                );
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(resultSet.getString(i) + " ");
+                }
+                System.out.println();
             }
+
+            /*
+            resultSet.last();
+            int rowCount = resultSet.getRow();
+
+            for(int i = 1; i <= rowCount; i++){
+                resultSet.next();
+                // Gets the information of the table, and prints it out
+                for(int j = 1; j <= columnCount; j++){
+                    System.out.print(resultSet.getString(j)+" ");
+                }
+                System.out.println();
+            }
+             */
+
             connection.close(); // closes connection
         }
         catch (SQLException e) {
@@ -78,7 +91,6 @@ public class ScriptRunner {
 
             while (line != null) {
                 int i = 0;
-                //System.out.print("(");
                 sql.append("(");
                 for(String s: line.split(";") ){
                     if(i + 1 == line.split(";").length){
@@ -86,24 +98,20 @@ public class ScriptRunner {
                     }
                     else{
                         sql.append("'"+s+ "', ");
-                        //System.out.println(line.split(";").length+ " length");
-                        //System.out.println(i+" i");
+
                     }
                     i++;
                 }
                 sql.append("),");
-
                 sql.append("\n");
-                //System.out.print("),");
-                //System.out.println();
-                //System.out.println(line);
                 line = reader.readLine();
             }
 
             sql.delete(sql.length() -2, sql.length()); // Deletes the last comma
             sql.append(";");
 
-            System.out.println(sql);
+            //System.out.println(sql);
+            executeInsertion(sql.toString());
         }
         catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
@@ -113,5 +121,22 @@ public class ScriptRunner {
         }
 
 
+    }
+
+    private void executeInsertion(String query){
+        String url = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
+        System.out.println("Insert the data into PROGRAM");
+
+        try {
+            Connection connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM Program");
+            statement.executeUpdate("INSERT Program VALUES "+query);
+
+            connection.close(); // closes connection
+        }
+        catch (SQLException e) {
+            System.out.println("Connection failed: " + e.getMessage()); // Error message
+        }
     }
 }

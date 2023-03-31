@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS TV3;
 CREATE DATABASE TV3;
 USE TV3;
-
+/*
 CREATE TABLE Program
 (Title	    	VARCHAR(50),
  FootageID      INT(10),
@@ -9,6 +9,18 @@ CREATE TABLE Program
  Duration		INT(181),
  CPRNummer      INT(10),
  PRIMARY KEY(Title, FootageID));
+ */
+ CREATE TABLE Program
+ (Title VARCHAR(50),
+ Date VARCHAR(50),
+ Duration INT(3),
+ CPR INT(10),
+ FirstName VARCHAR(50),
+ LastName VARCHAR(50),
+ StreetName VARCHAR(50),
+ CivicNumber INT(3),
+ ZIPCode INT(4),
+ Country VARCHAR(50));
  
  -- SELECT * FROM Program;
  
@@ -44,6 +56,7 @@ CREATE TABLE Journalist_Address
  Drop table Journalist;
  */
  
+ /*
 INSERT Program VALUES
 ('Royal wedding', '01','2004-05-14','174', '10103040'),
 ('Covid-19 Restrictions', '02', '2020-03-11','162', '30302125'),
@@ -53,6 +66,7 @@ INSERT Program VALUES
 ('SAS Strike', '06', '2022-07-18','112', '30302125'),
 ('Election Day', '07', '2022-01-11','155', '10204410'),
 ('Snowstorm', '08', '2023-03-06','111', '10103040');
+*/
 
 -- SELECT * FROM Program order by FootageID;
 
@@ -78,7 +92,7 @@ INSERT Journalist_Address VALUES
 ('20208981', 'Hovedgade', '9', '2850', 'Nærum', 'Danmark', 'Europa'), 
 ('10204410', 'Vestergaardsvej', '13', '2830', 'Virum', 'Danmark', 'Europa');
 
--- SELECT * FROM Journalist_Address;
+SELECT * FROM PROGRAM;
 
   
 
