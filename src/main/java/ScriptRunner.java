@@ -61,21 +61,6 @@ public class ScriptRunner {
                 }
                 System.out.println();
             }
-
-            /*
-            resultSet.last();
-            int rowCount = resultSet.getRow();
-
-            for(int i = 1; i <= rowCount; i++){
-                resultSet.next();
-                // Gets the information of the table, and prints it out
-                for(int j = 1; j <= columnCount; j++){
-                    System.out.print(resultSet.getString(j)+" ");
-                }
-                System.out.println();
-            }
-             */
-
             connection.close(); // closes connection
         }
         catch (SQLException e) {
